@@ -1,0 +1,234 @@
+.vr-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  position: relative;
+  transition: border-color 0.2s;
+  animation: slideIn 0.3s ease both;
+}
+
+.vr-card:hover {
+  border-color: var(--border-bright);
+}
+
+.vr-card.active .vr-status-bar {
+  background: var(--success);
+}
+.vr-card.inactive .vr-status-bar {
+  background: var(--border);
+}
+.vr-card.pending {
+  opacity: 0.7;
+}
+
+.vr-status-bar {
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  transition: background 0.3s;
+}
+
+.vr-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 16px 16px 22px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.vr-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  width: fit-content;
+}
+.badge-active {
+  background: var(--success-dim);
+  color: var(--success);
+  border: 1px solid rgba(0,255,136,0.2);
+}
+.badge-inactive {
+  background: var(--bg-3);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.badge-active .badge-dot {
+  animation: pulse-glow 2s ease infinite;
+  box-shadow: 0 0 4px currentColor;
+}
+
+.vr-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.vr-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+}
+.vr-ns {
+  font-size: 9px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 2px 6px;
+  letter-spacing: 0.1em;
+}
+.vr-field {
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.vr-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Toggle */
+.toggle-btn {
+  width: 44px;
+  height: 24px;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: var(--bg-3);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+}
+.toggle-btn:disabled {
+  cursor: not-allowed;
+}
+.toggle-on {
+  background: var(--success-dim);
+  border-color: var(--success);
+}
+.toggle-off {
+  background: var(--bg-3);
+  border-color: var(--border);
+}
+.toggle-thumb {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: var(--text-dim);
+  transition: all 0.25s ease;
+}
+.toggle-on .toggle-thumb {
+  transform: translateX(20px);
+  background: var(--success);
+  box-shadow: 0 0 6px var(--success);
+}
+.toggle-off .toggle-thumb {
+  transform: translateX(0);
+}
+.toggle-spinner {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto;
+}
+
+/* Expand button */
+.expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.expand-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.expand-btn.expanded svg {
+  transform: rotate(180deg);
+}
+
+/* Details */
+.vr-details {
+  border-top: 1px solid var(--border);
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.2s ease;
+  background: var(--bg-3);
+}
+.detail-row {
+  display: flex;
+  gap: 16px;
+  font-size: 11px;
+}
+.detail-key {
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  width: 100px;
+  flex-shrink: 0;
+  font-size: 9px;
+  padding-top: 2px;
+}
+.detail-val {
+  color: var(--text-muted);
+  flex: 1;
+  line-height: 1.6;
+}
+.detail-val.error-msg {
+  color: var(--danger);
+}
+.detail-val.mono {
+  font-size: 10px;
+  color: var(--text-dim);
+  word-break: break-all;
+}
+.formula-row {
+  flex-direction: column;
+  gap: 8px;
+}
+.formula-pre {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  background: var(--bg);
+  padding: 12px;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
